@@ -9,3 +9,4 @@
 - Data types [x]
 - Variables [x]
 - FMT package [x]
+- Numeric Types []
