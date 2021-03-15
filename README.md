@@ -9,6 +9,7 @@
 - Data types [x]
 - Variables [x]
 - Overflow [x]
+- Constants [x]
 - FMT package [x]
 - Numeric Types [x]
 - If and logical expressions [x]
