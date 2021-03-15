@@ -9,4 +9,6 @@
 - Data types [x]
 - Variables [x]
 - FMT package [x]
-- Numeric Types []
+- Numeric Types [x]
+- If and logical expressions [x]
+- Array and slices [x]
