@@ -10,6 +10,7 @@
 - Variables [x]
 - Overflow [x]
 - Constants [x]
+- Iota [x]
 - FMT package [x]
 - Numeric Types [x]
 - If and logical expressions [x]
