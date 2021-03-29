@@ -8,10 +8,11 @@
   - [x] Summary
 - Data types [x]
 - Variables [x]
+- Scope [x]
 - Overflow [x]
 - Constants [x]
 - Iota [x]
 - FMT package [x]
 - Numeric Types [x]
 - If and logical expressions [x]
-- Array and slices [x]
+- Array, slices and maps [x]
