@@ -20,3 +20,4 @@
 - - Variadic Function []
 - - Closure []
 - - Recursion []
+- - Defer, Panic & Recover []
