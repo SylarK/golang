@@ -16,3 +16,7 @@
 - Numeric Types [x]
 - If and logical expressions [x]
 - Array, slices and maps [x]
+- Functions []
+- - Variadic Function []
+- - Closure []
+- - Recursion []
