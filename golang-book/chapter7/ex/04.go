@@ -10,16 +10,15 @@ package main
 import "fmt"
 
 func fibonacci(arg uint) uint {
-	if arg == 0 {
+	if(arg == 0){
 		return 0
-	}
-	if arg == 1 {
+	} else if (arg == 1){
 		return 1
-	}
-	//f(n) = f(n-1) + f(n-2)
-	return fibonacci(arg-1) + fibonacci(arg-2)
+	} else {
+		return fibonacci(arg-1) + fibonacci(arg-2)
+	}	
 }
 
 func main() {
-	fmt.Println(fibonacci(10))
+	fmt.Println(fibonacci(6))
 }
