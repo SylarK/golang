@@ -22,3 +22,4 @@
 - - Recursion [x]
 - - Defer, Panic & Recover [x]
 - Pointers [x]
+- Concurrency []
