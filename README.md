@@ -22,4 +22,7 @@
 - - Recursion [x]
 - - Defer, Panic & Recover [x]
 - Pointers [x]
-- Concurrency []
+- Concurrency [x]
+- Packages [x]
+- Testings []
+- The core packages []
