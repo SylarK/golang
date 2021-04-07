@@ -25,9 +25,9 @@ func main() {
 
 	terrestrial := planets[0:4]
 	gasGiants := planets[4:6]
-	iceGiants := planets[6:8]
-	giants := planets[4:8]
-	gas := giants[0:2]
+	iceGiants := planets[6:]
+	giants := planets[4:] // Ommiting the last index defaults to the lenth of the array
+	gas := giants[:2]     // Ommiting the first index defaults to the beggining of the array
 	ice := giants[2:4]
 
 	fmt.Println(terrestrial, gasGiants, iceGiants)
