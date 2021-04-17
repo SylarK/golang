@@ -33,11 +33,11 @@ func main() {
 
 	defer db.Close()
 
-	//sqlSelect()
+	sqlSelect()
 	//sqlSelectID()
 	//sqlInsert()
 	//sqlUpdate()
-	sqlDelete()
+	//sqlDelete()
 
 }
 
