@@ -23,6 +23,6 @@ const Password = "masterkey"
 
 const DbName = "Go"
 
-const TableName = "article"
+var TableName = [...]string{"product", "users"}
 
 var DataSourceName = fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable", Host, Port, User, Password, DbName)
