@@ -10,7 +10,7 @@ const Host = "localhost"
 
 const Port = "5432"
 
-const Password = "-"
+const Password = "spk159288"
 
 const DbName = "BRUTAMADEIRAS"
 
