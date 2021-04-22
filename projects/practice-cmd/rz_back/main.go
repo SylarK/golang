@@ -18,7 +18,7 @@ type Data struct {
 	origem   string
 	destino  string
 	porta    string
-	host 		 string	
+	host     string
 }
 
 func main() {
@@ -28,16 +28,15 @@ func main() {
 	caminho := "C:\\Programdata\\SPK Sistemas\\aliasSPK.ini"
 	retorno, falha := getText(caminho)
 	if falha != nil {
-		log.Fatalf("Error ao buscar C:\\Programdata\\SPK Sistemas\\aliasSPK.ini\nVerifique se o arquivo está criado.\n\n%v",falha.Error() )
+		log.Fatalf("Error ao buscar C:\\Programdata\\SPK Sistemas\\aliasSPK.ini\nVerifique se o arquivo está criado.\n\n%v", falha.Error())
 	}
 
-	for i, _ := range retorno{
-		retorno[i] = retorno[i][strings.Index(retorno[i], "=") + 1:]
+	for i, _ := range retorno {
+		retorno[i] = retorno[i][strings.Index(retorno[i], "=")+1:]
 	}
-
 
 	dataFirebird := Data{
-		"FB", retorno[5], "spk159288", "BUSINESS", retorno[3], retorno[3] + "\\BKPRZ_botFB.FBK", retorno[7], retorno[4],
+		"FB", retorno[5], "spk159288", "BUSINESS", retorno[3], "C:\\Spk Sistemas\\BKPRZ_botFB.FBK", retorno[7], retorno[4],
 	}
 
 	dataPostgres := Data{
@@ -88,10 +87,10 @@ func main() {
 		fmt.Print("Caminho origem do arquivo a ser restaurado (ex : C:\\Spk Sistemas\\Backups\\BACKUP.FBK) : ")
 		in := bufio.NewReader(os.Stdin)
 		line, _ := in.ReadString('\n')
-		dataFirebird.origem = line[0:len(line) - 2]
+		dataFirebird.origem = line[0 : len(line)-2]
 		fmt.Print("Caminho destino do arquivo a ser restaurado (ex : C:\\Spk Sistemas\\Bases\\RZBUSINESS_RESTAURADO.FDB) : ")
 		line, _ = in.ReadString('\n')
-		dataFirebird.destino = line[0:len(line) - 2]
+		dataFirebird.destino = line[0 : len(line)-2]
 		fixPath(&dataFirebird)
 
 		command := exec.Command("C:\\Program Files (x86)\\Firebird\\Firebird_3_0\\gbak.exe", "-r", "-user", dataFirebird.usuario, "-password", dataFirebird.senha, dataFirebird.origem, dataFirebird.destino)
@@ -116,19 +115,19 @@ func main() {
 		fmt.Print("Caminho origem do arquivo a ser restaurado (ex : C:\\Spk Sistemas\\Backups\\BACKUP.backup) : ")
 		in := bufio.NewReader(os.Stdin)
 		line, _ := in.ReadString('\n')
-		dataPostgres.origem = line[0:len(line) - 2]
+		dataPostgres.origem = line[0 : len(line)-2]
 
 		fmt.Print("\nPorta : ")
 		line, _ = in.ReadString('\n')
-		dataPostgres.porta = line[0:len(line) - 2]
+		dataPostgres.porta = line[0 : len(line)-2]
 
 		fmt.Print("\nUsuário : ")
 		line, _ = in.ReadString('\n')
-		dataPostgres.usuario = line[0:len(line) - 2]
+		dataPostgres.usuario = line[0 : len(line)-2]
 
 		fmt.Print("\nNome do Banco de dados já cadastrado : ")
 		line, _ = in.ReadString('\n')
-		dataPostgres.database = line[0:len(line) - 2]
+		dataPostgres.database = line[0 : len(line)-2]
 
 		command := exec.Command("C:\\PostgreSQL\\12\\bin\\pg_restore.exe", "--host", "localhost", "--port", dataPostgres.porta, "--username", dataPostgres.usuario, "--dbname", dataPostgres.database, dataPostgres.origem)
 		var out bytes.Buffer
@@ -144,7 +143,7 @@ func main() {
 			fmt.Printf("\nComando executado com sucesso. A restauração foi iniciada.\n\nPressione 'Enter' para sair...")
 			fmt.Scanf("h")
 		}
-		
+
 	default:
 		clearScreen()
 		fmt.Println("A opção escolhida não é válida. O sistema será encerrado.")
@@ -164,48 +163,48 @@ func chooseOption(i *int) {
 func getData(data *Data) {
 
 	msgScreen("ALTERAÇÃO")
-	
+
 	in := bufio.NewReader(os.Stdin)
 
 	if data.tipo == "FB" {
 
 		fmt.Print("\nUsuario : ")
 		line, _ := in.ReadString('\n')
-		data.usuario = line[0:len(line) - 2]
+		data.usuario = line[0 : len(line)-2]
 
 		fmt.Print("\nPassword : ")
 		line, _ = in.ReadString('\n')
-		data.senha = line[0:len(line) - 2]
+		data.senha = line[0 : len(line)-2]
 
 		fmt.Print("\nCaminho para o arquivo (ex : C:\\Spk Sistemas\\Bases\\BUSINESS.FDB) : ")
 		line, _ = in.ReadString('\n')
-		data.origem = line[0:len(line) - 2]
+		data.origem = line[0 : len(line)-2]
 
 		fmt.Print("\nCaminho onde será colocado o backup (ex : C:\\Spk Sistemas\\Backups\\BACKUP.FBK) : ")
 		line, _ = in.ReadString('\n')
-		data.destino = line[0:len(line) - 2]
+		data.destino = line[0 : len(line)-2]
 
 		fmt.Print("\nPorta : ")
 		line, _ = in.ReadString('\n')
-		data.porta = line[0:len(line) - 2]
+		data.porta = line[0 : len(line)-2]
 
 	} else {
 		fmt.Print("\nUsuario : ")
 		line, _ := in.ReadString('\n')
-		data.usuario = line[0:len(line) - 2]
+		data.usuario = line[0 : len(line)-2]
 
 		fmt.Print("\nNome do database no sistema : ")
 		line, _ = in.ReadString('\n')
-		data.database = line[0:len(line) - 2]
+		data.database = line[0 : len(line)-2]
 
 		fmt.Print("\nCaminho onde será colocado o backup (ex : C:\\Backup\\rzbusiness.backup) : ")
 		line, _ = in.ReadString('\n')
-		data.destino = line[0:len(line) - 2]
+		data.destino = line[0 : len(line)-2]
 		data.destino = strings.ReplaceAll(data.destino, "\\", "\\\\")
 
 		fmt.Print("\nPorta : ")
 		line, _ = in.ReadString('\n')
-		data.porta = line[0:len(line) - 2]
+		data.porta = line[0 : len(line)-2]
 	}
 
 	fixPath(data)
@@ -250,13 +249,13 @@ func fixPath(data *Data) {
 	data.origem = strings.ReplaceAll(data.origem, "\\", "\\\\")
 }
 
-func clearScreen(){
+func clearScreen() {
 	command := exec.Command("cmd", "/c", "cls")
 	command.Stdout = os.Stdout
 	command.Run()
 }
 
-func getText(path string) ([]string, error){
+func getText(path string) ([]string, error) {
 
 	arquivo, _ := os.Open(path)
 	/* if err != nil{
@@ -266,13 +265,12 @@ func getText(path string) ([]string, error){
 
 	var lines []string
 	scanner := bufio.NewScanner(arquivo)
-	for scanner.Scan(){
+	for scanner.Scan() {
 		lines = append(lines, scanner.Text())
 	}
 
 	return lines, scanner.Err()
 
 }
-
 
 //Lucas Amado - @amadodev
