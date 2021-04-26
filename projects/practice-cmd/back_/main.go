@@ -40,11 +40,11 @@ func main() {
 	}
 
 	dataPostgres := Data{
-		"PG", retorno[5], "-", "BUSINESS", retorno[3], "C:\\Spk Sistemas\\BKPRZ_botPG.backup", retorno[7], retorno[4],
+		"PG", "Linkedin", "-", "BUSINESS", "C:\\ProgramFiles\\PostgreSQL\\12\\bin", "C:\\Bases\\Backups\\baseBackup.backup", retorno[7], retorno[4],
 	}
 
 	//showData(&data)
-	msgScreen("RAZEM")
+	msgScreen("BACKUP E RESTORE")
 	chooseOption(&option)
 
 	switch option {
