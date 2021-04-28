@@ -55,8 +55,21 @@ func getPeople(w http.ResponseWriter, r *http.Request) {
 }
 
 func getPerson(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("Endpoint: Get Person {id}")
-	fmt.Fprintf(w, "Get Person")
+	vars := mux.Vars(r)
+	key := vars["id"]
+
+	//fmt.Fprintf(w, "Get Person %v\n", key)
+
+	var records []Person
+	getCSV(&records)
+
+	for _, rec := range records {
+		if rec.ID == key {
+			json.NewEncoder(w).Encode(rec)
+		}
+	}
+
+	fmt.Printf("Endpoint: Get Person {%v}", key)
 }
 
 func getCSV(json_data *[]Person) {
