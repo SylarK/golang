@@ -93,7 +93,7 @@ func main() {
 		dataFirebird.destino = line[0 : len(line)-2]
 		fixPath(&dataFirebird)
 
-		command := exec.Command("C:\\Program Files (x86)\\Firebird\\Firebird_3_0\\gbak.exe", "-r", "-user", dataFirebird.usuario, "-password", dataFirebird.senha, dataFirebird.origem, dataFirebird.destino)
+		command := exec.Command("gbak.exe", "-r", "-user", dataFirebird.usuario, "-password", dataFirebird.senha, dataFirebird.origem, dataFirebird.destino)
 		fmt.Println("\nAguarde, executando comando...")
 		var out bytes.Buffer
 		var stderr bytes.Buffer
@@ -129,7 +129,7 @@ func main() {
 		line, _ = in.ReadString('\n')
 		dataPostgres.database = line[0 : len(line)-2]
 
-		command := exec.Command("C:\\PostgreSQL\\12\\bin\\pg_restore.exe", "--host", "localhost", "--port", dataPostgres.porta, "--username", dataPostgres.usuario, "--dbname", dataPostgres.database, dataPostgres.origem)
+		command := exec.Command("pg_restore.exe", "--host", "localhost", "--port", dataPostgres.porta, "--username", dataPostgres.usuario, "--dbname", dataPostgres.database, dataPostgres.origem)
 		var out bytes.Buffer
 		var stderr bytes.Buffer
 		command.Stdout = &out
