@@ -1,15 +1,35 @@
 package main
 
 import (
+	"bufio"
 	"crypto/aes"
 	"crypto/cipher"
+	"crypto/rand"
 	"encoding/hex"
 	"fmt"
+	"io/ioutil"
+	"os"
 )
 
 func main() {
-	//fmt.Println(encrypt("LucasAmado", "52fdfc072182654f163f5f0f9a621d729566c74d10037c4d7bbb0407d1e2c649"))
-	fmt.Println(decrypt("0000000000000000000000002b0fc2d505ae6889c718a84ffbb9254c531ce87ce2761a9d3d84", "52fdfc072182654f163f5f0f9a621d729566c74d10037c4d7bbb0407d1e2c649"))
+	
+	var dataToEncrypt string
+	var encryptedData string
+	var decryptedData string
+
+	hash := verifyFile("myHash.txt")
+	
+	in := bufio.NewReader(os.Stdin)
+
+	fmt.Print("Dado a ser encriptografado: ")
+	line, _ := in.ReadString('\n')
+	dataToEncrypt = line[0 : len(line)-2]
+
+	encryptedData = encrypt(dataToEncrypt, hash)
+	fmt.Println("Dado encriptografado:", encryptedData)
+
+	decryptedData = decrypt(encryptedData, hash)
+	fmt.Println("Dado descriptografado: ", decryptedData)
 }
 
 func encrypt(stringToEncrypt string, keyString string) (encryptedString string) {
@@ -78,6 +98,49 @@ func decrypt(encryptedString string, keyString string) (decryptedString string) 
 	}
 
 	return fmt.Sprintf("%s", plaintext)
+}
+
+func verifyFile(filename string) (hash string){
+	file, err := os.Open(filename)
+	if err != nil {
+		f, err := os.Create(filename)
+		if err != nil {
+			fmt.Println(err.Error())
+		}
+		f.Close()
+		
+		return createHash()
+	}
+	file.Close()
+
+	content, err := ioutil.ReadFile(filename);
+	if err != nil{
+		fmt.Println(err)
+	}
+	
+	return string(content)
+}
+
+func createHash() (hash string){
+	
+	bytes := make([]byte, 32)
+	if _, err := rand.Read(bytes); err != nil{
+		panic(err.Error())
+	}
+
+	hasher := hex.EncodeToString(bytes)
+
+	f, err := os.OpenFile("myHash.txt", os.O_APPEND|os.O_WRONLY, 0644)
+	if err != nil {
+		fmt.Println(err.Error())
+		os.Exit(1)
+	}
+	defer f.Close()
+	f.WriteString(hasher + "\n")
+
+	fmt.Println("Hash Criado com sucesso.")
+
+	return hasher
 }
 
 /*

@@ -1,0 +1,26 @@
+//simple http server
+package main
+
+import (
+	"fmt"
+	"log"
+	"net/http"
+)
+
+const(
+	CONN_HOST = "localhost"
+	CONN_PORT = "8080"
+)
+
+func sayHello(w http.ResponseWriter, r *http.Request){
+	fmt.Fprintf(w, "Hello World! ")
+}
+
+func main(){
+	http.HandleFunc("/", sayHello)
+	err := http.ListenAndServe(CONN_HOST+":"+CONN_PORT, nil)
+	if err != nil{
+		log.Fatal("Erro ao iniciar http server : ", err)
+		return
+	}
+}
