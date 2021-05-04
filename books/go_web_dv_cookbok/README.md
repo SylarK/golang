@@ -9,3 +9,7 @@
 - 07.go **Implementing HTTP request routing**
 - 08.go **Implementing HTTP request routing using Gorilla Mux**
 - 09.go **Logging HTTP requests**
+
+#### 02. Working with Templates, Static Files, and HTML Forms
+
+- 01.go **Creating a simple template**
