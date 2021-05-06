@@ -13,3 +13,6 @@
 #### 02. Working with Templates, Static Files, and HTML Forms
 
 - 01.go **Creating a simple template**
+- 02.go **Serving static files over HTTP**
+- 03.go **Serving static files over HTTP using Gorilla Mux**
+- 04.go **Creating my first HTML form**

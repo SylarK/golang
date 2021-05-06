@@ -18,7 +18,7 @@ type Person struct {
 
 func renderTemplate(w http.ResponseWriter, r *http.Request) {
 	person := Person{"1", "Lucas Amado"}
-	parsedTemplate, _ := template.ParseFiles("templates/01.html")
+	parsedTemplate, _ := template.ParseFiles("static-files/templates/01.html")
 	err := parsedTemplate.Execute(w, person)
 	if err != nil {
 		log.Printf("Error ocurred while executing the template or writing its output : ", err)
