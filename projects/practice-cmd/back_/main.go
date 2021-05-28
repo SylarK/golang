@@ -36,11 +36,11 @@ func main() {
 	}
 
 	dataFirebird := Data{
-		"FB", retorno[5], "spk159288", "BUSINESS", retorno[3], "C:\\Spk Sistemas\\BKPRZ_botFB.FBK", retorno[7], retorno[4],
+		"FB", retorno[5], "spk159288", "BUSINESS", retorno[4], "C:\\Spk Sistemas\\Bases\\baseBackupFB.FBK", retorno[7], retorno[4],
 	}
 
 	dataPostgres := Data{
-		"PG", "Linkedin", "-", "BUSINESS", "C:\\ProgramFiles\\PostgreSQL\\12\\bin", "C:\\Bases\\Backups\\baseBackup.backup", retorno[7], retorno[4],
+		"PG", "SPK", "spk159288", "BUSINESS", "C:\\ProgramFiles\\PostgreSQL\\12\\bin", "C:\\Spk Sistemas\\Bases\\baseBackup.backup", retorno[7], retorno[4],
 	}
 
 	//showData(&data)

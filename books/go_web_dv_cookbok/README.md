@@ -16,3 +16,6 @@
 - 02.go **Serving static files over HTTP**
 - 03.go **Serving static files over HTTP using Gorilla Mux**
 - 04.go **Creating my first HTML form**
+- 05.go **Reading the HTML form**
+- 06.go **Validating your first HTML form**
+- 07.go **Uploading a file**
